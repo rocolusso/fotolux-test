@@ -1,0 +1,58 @@
+@import 'tailwindcss';
+
+/* Токены из FRONTEND.md — тёплые нейтрали, светлая тема. */
+@theme {
+  --color-bg: #ffffff;
+  --color-warm: #f5f4f2;
+  --color-deep: #1c1b1a;
+
+  --color-ink: #1a1918;
+  --color-ink-2: #55504a;
+  --color-ink-3: #8a837b;
+
+  --color-line: #e2ddd7;
+  --color-line-strong: #c9c1b8;
+
+  --color-accent: #8a7a6d;
+  --color-accent-soft: #f0ebe5;
+
+  --font-display: var(--font-forum), Georgia, serif;
+  --font-body: var(--font-manrope), system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+  ::selection {
+    background: var(--color-accent-soft);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
