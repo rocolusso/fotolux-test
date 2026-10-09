@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import { Forum, Manrope } from 'next/font/google'
-import Head from "next/head";
+import Script from 'next/script'
 
 // latin-ext нужен для румынских ș и ț, cyrillic — для русского.
 const forum = Forum({
@@ -20,10 +20,14 @@ const manrope = Manrope({
 export function RootShell({ lang, children }: { lang: string; children: ReactNode }) {
   return (
     <html lang={lang} className={`${forum.variable} ${manrope.variable}`}>
-      <Head>
-        <script src="https://analytics.ahrefs.com/analytics.js" data-key="Eq9UKbXcEKL8Yp9N27m3MA" async></script>
-      </Head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="Eq9UKbXcEKL8Yp9N27m3MA"
+          strategy="afterInteractive"
+        />
+      </body>
     </html>
   )
 }
